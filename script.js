@@ -1,4 +1,4 @@
-setTimeout(inizioGioco(), setTime() * 1000);
+setTimeout(inizioGioco(), setTime() * 100);
 
 numberGenerator();
 setTime();
@@ -29,5 +29,5 @@ function setTime(){
 }
 
 function inizioGioco(){
-    return 0;
+    console.log("FUNZIONA");
 }
