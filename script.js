@@ -1,22 +1,19 @@
-setTimeout(inizioGioco(), setTime() * 100);
+let numeriCasuali = [];
+numeriCasuali = numberGenerator(numeriCasuali);
 
-numberGenerator();
-setTime();
+setTimeout(inizioGioco, setTime() * 100);
 
-
-function numberGenerator(){
-
-    let numeriCasuali = [];
+function numberGenerator(array){
+    // let numeriCasuali = [];
     let codeHTMLSpan = "";
     
     for(let i = 0; i < 5; i++){
-        numeriCasuali.push(Math.floor(Math.random() * 101));
-        codeHTMLSpan += `${numeriCasuali[i]}, `
+        array.push(Math.floor(Math.random() * 101));
+        codeHTMLSpan += `${array[i]}, `
     }
-    console.log("numeriCasuali =", numeriCasuali);
     document.querySelector("span").innerHTML = codeHTMLSpan;
 
-    return numeriCasuali;
+    return array;
 }
 
 function setTime(){
@@ -29,5 +26,27 @@ function setTime(){
 }
 
 function inizioGioco(){
-    console.log("FUNZIONA");
+    // let prova = numberGenerator();
+    let count = 0;
+    let risposta;
+
+    console.log(numeriCasuali);
+    for(let i = 0; i < numeriCasuali.length; i++){
+        risposta = prompt("Inserisci il numero " + [i+1]);
+        
+        for(let j = 0; j < numeriCasuali.length; j++){
+            if(numeriCasuali[j] == risposta){
+                count++;
+            }
+        }
+    }
+    console.log(numeriCasuali);
+
+    if(count == 5){
+        return alert("WOW HAI INDOVINATO TUTTI I NUMERI");
+    }
+    if(count > 3){
+        return alert("Bravo hai indovinato " + count + " numeri");
+    }
+    return alert("Malino. Hai indovinato " + count + " numeri");
 }
